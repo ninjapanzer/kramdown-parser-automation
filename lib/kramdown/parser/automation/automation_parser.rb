@@ -14,7 +14,7 @@ module Kramdown
         )
       }
 
-      FENCED_CODEBLOCK_MATCH = /^([ ]{0,3}[~`]{3,})\W*(\w*)(?:\W*[{](\s*[a-zA-Z0-9]+=\".+\")+[}])\W*\n([\S\W\n]*)\n\1/m
+      FENCED_CODEBLOCK_MATCH = /^([ ]{0,3}[~`]{3,})\W*(\w*)(?:\W*[{](\s*[a-zA-Z0-9-]+=\".+\")+[}])\W*\n([\S\W\n]*)\n\1/m
       FENCED_CODEBLOCK_MATCH_PATTERN = -> {
         match_pattern = FENCED_CODEBLOCK_MATCH
         match_pattern = OPTIONS[:codeblock_automation][:match] if OPTIONS[:codeblock_automation]&.has_key?(:match)
@@ -40,7 +40,7 @@ module Kramdown
             el.options[:automation] = automation
           end
 
-          puts automation
+          puts "Automation Config: #{automation}"
 
           tree.children << el
           true
