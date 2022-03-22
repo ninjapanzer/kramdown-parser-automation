@@ -7,7 +7,7 @@ require_relative 'automation_version'
 module Kramdown
   module Parser
 
-    # This class provides a parser implementation for the GFM dialect of Markdown.
+    # This class provides a parser implementation for the Automation dialect of Markdown.
     class Automation < Kramdown::Parser::Kramdown
 
       VERSION = Parser::AUTOMATION_VERSION
@@ -40,17 +40,22 @@ module Kramdown
       end
 
       def self.define_parser(name, start_re, span_start = nil, meth_name = "parse_#{name}")
-        define_method("parse_#{name}".to_sym) do |src, tree|
-          send("parse_#{parser}".to_sym, src, tree)
-        end
         REGISTRY.push(name)
         super
+      end
+
+      def self.mixin_registry(target)
+        REGISTRY.each do |ext|
+          target.define_singleton_method("parse_#{ext}".to_sym) do
+            Kramdown::Parser::Automation.send("parse_#{ext}".to_sym, target, target.src, target.tree)
+          end
+        end
       end
 
       def initialize(source, options)
         super
         @block_parsers.unshift(:codeblock_automation)
-        self.class.load_extension(:automation)
+        self.class.load_extension(:codeblock_automation)
       end
 
     end
