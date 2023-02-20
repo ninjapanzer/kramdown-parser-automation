@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.license  = 'MIT'
   s.summary  = 'A kramdown parser for the inline automation dialect within Markdown fenced codeblocks'
 
-  s.files = Dir.glob('{lib,test}/**/*')
+  s.files = Dir.glob('{lib,test,sig}/**/*')
   s.require_path = 'lib'
 
   s.required_ruby_version = '>= 2.5.0'

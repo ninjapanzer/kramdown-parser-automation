@@ -1,0 +1,25 @@
+# TypeProf 0.21.1
+
+# Classes
+module Kramdown
+  module Options
+  end
+
+  module Parser
+    AUTOMATION_VERSION: String
+
+    class Automation
+      VERSION: String
+      EXTENSIONS: {codeblock_automation: String}
+      LOADED_EXTENSIONS: Hash[untyped, untyped]
+      OPTIONS: Hash[untyped, untyped]
+      REGISTRY: Array[untyped]
+      @block_parsers: bot
+
+      def self.load_extension: (:codeblock_automation id, ?Hash[untyped, untyped] options) -> bool?
+      def self.define_parser: (untyped name, untyped start_re, ?nil span_start, ?String meth_name) -> untyped
+      def self.mixin_registry: (untyped target) -> Array[untyped]
+      def initialize: (untyped source, untyped options) -> void
+    end
+  end
+end

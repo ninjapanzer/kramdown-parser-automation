@@ -1,0 +1,16 @@
+# TypeProf 0.21.1
+
+# Classes
+module Kramdown
+  module Parser
+    class Automation
+      FENCED_CODEBLOCK_AUTOMATION_START_PATTERN: Regexp
+      FENCED_CODEBLOCK_START: Regexp
+      FENCED_CODEBLOCK_START_PATTERN: ^-> Regexp
+      FENCED_CODEBLOCK_MATCH: Regexp
+      FENCED_CODEBLOCK_MATCH_PATTERN: ^-> Regexp
+
+      def self.parse_codeblock_automation: (untyped base, untyped src, untyped tree) -> bool
+    end
+  end
+end
